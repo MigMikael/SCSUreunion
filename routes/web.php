@@ -26,3 +26,13 @@ Route::post('step1', 'AlumniController@handleFirstStep');
 
 Route::get('/alumni/register/step2', 'AlumniController@lastStep');
 Route::post('step2', 'AlumniController@handleLastStep');
+
+
+Route::get('/alumni/register/result/{code}', 'AlumniController@registerResult');
+
+
+Route::get('/alumni/{code}/qr', 'AlumniController@getQrCode');
+Route::get('/alumni/{code}/qr_download', 'AlumniController@downloadQrCode');
+
+
+Route::get('/test', 'TestController@testSubStr');
