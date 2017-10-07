@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "9c1abed9d274461d42e103d859349965",
+    "content-hash": "1f01ed1e529070492ef1565f650df3f9",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -169,6 +169,48 @@
                 }
             ],
             "time": "2016-06-13T19:28:20+00:00"
+        },
+        {
+            "name": "codedge/laravel-fpdf",
+            "version": "1.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/codedge/laravel-fpdf.git",
+                "reference": "646f4d8d4763896e60e3022fb29d27abceec79da"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/codedge/laravel-fpdf/zipball/646f4d8d4763896e60e3022fb29d27abceec79da",
+                "reference": "646f4d8d4763896e60e3022fb29d27abceec79da",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "5.*",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Codedge\\Fpdf\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Holger Lösken",
+                    "email": "holger.loesken@codedge.de"
+                }
+            ],
+            "description": "Laravel 5 package for use with Fpdf. It ships with Fpdf 1.81.",
+            "keywords": [
+                "fpdf",
+                "laravel",
+                "pdf"
+            ],
+            "time": "2017-06-02T21:38:56+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",

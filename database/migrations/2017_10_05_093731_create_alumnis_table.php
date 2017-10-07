@@ -27,6 +27,9 @@ class CreateAlumnisTable extends Migration
             $table->string('position')->nullable();
             $table->string('food');
             $table->integer('follower')->default(0);
+            $table->boolean('is_gratitude')->default(false);
+            $table->boolean('is_party')->default(false);
+            $table->boolean('is_attend')->default(false);
             $table->timestamps();
         });
     }

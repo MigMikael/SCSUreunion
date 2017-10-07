@@ -4,15 +4,18 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
+                @if (isset($status))
+                    <div class="alert alert-success">
+                        {{ $status }}
+                    </div>
+                @endif
                 <div class="panel panel-default" style="text-align: center">
                     <div class="panel-heading">
-                        <h1>ลงทะเบียนเสร็จสมบูรณ์</h1>
+                        <h1>{{ $alumni->first_name }} {{ $alumni->last_name }}</h1>
                     </div>
 
                     <div class="panel-body">
-                        <h2>{{ $alumni->first_name }} {{ $alumni->last_name }}</h2>
-                        <h3>{{ $alumni->major }}</h3>
-                        <h1>SC : <b>{{ $alumni->sc }}</b></h1>
+                        <h3>{{ $alumni->major }}  <b style="color: #FFD700">[SC {{ $alumni->sc }}]</b></h3>
                         <br>
 
                         <p style="color: #ff0000">
@@ -22,11 +25,21 @@
                     </div>
 
                     <div class="panel-footer">
-                        <a href="" class="btn btn-success btn-lg">พิมพ์</a>
-                        <a href="{{ url('/alumni/'.$alumni->code.'/qr_download') }}" target="_blank" class="btn btn-primary btn-lg">บันทึก</a>
+                        <a href="{{ url('/alumni/'.$alumni->code.'/qr_download') }}" target="_blank" class="btn btn-primary btn-lg">
+                            บันทึก
+                        </a>
+                        <button class="btn btn-success btn-lg" onclick="printFunction()">
+                            พิมพ์
+                        </button>
+                        <a href="" class="btn btn-default btn-lg">แก้ไขข้อมูล</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        function printFunction() {
+            window.print();
+        }
+    </script>
 @endsection

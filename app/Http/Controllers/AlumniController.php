@@ -9,6 +9,25 @@ use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class AlumniController extends Controller
 {
+    public $major = [
+        'คณิตศาสตร์' => 'คณิตศาสตร์',
+        'ชีววิทยา' => 'ชีววิทยา',
+        'เคมี' => 'เคมี',
+        'ฟิสิกส์' => 'ฟิสิกส์',
+        'สถิติ' => 'สถิติ',
+        'วิทยาศาสตร์สิ่งแวดล้อม' => 'วิทยาศาสตร์สิ่งแวดล้อม',
+        'วิทยาการคอมพิวเตอร์' => 'วิทยาการคอมพิวเตอร์',
+        'จุลชีววิทยา' => 'จุลชีววิทยา',
+        'คณิตศาสตร์ประยุกต์' => 'คณิตศาสตร์ประยุกต์',
+        'เทคโนโลยีสารสนเทศ' => 'เทคโนโลยีสารสนเทศ'
+    ];
+
+    public $food = [
+        'ทั่วไป' => 'ทั่วไป',
+        'มังสวิรัติ' => 'มังสวิรัติ',
+        'มุสลิม' => 'มุสลิม',
+    ];
+
     public function firstStep()
     {
         return view('register.first');
@@ -18,13 +37,16 @@ class AlumniController extends Controller
     {
         session_start();
         $code = $request->get('code');
-        $alumni = Alumni::where('code', $code)->get();
+        $alumni = Alumni::where('code', $code)->first();
 
         if(sizeof($alumni) < 1){
             $_SESSION['user_code'] = $code;
             return redirect()->action('AlumniController@lastStep');
         }else{
-            return redirect()->action('AlumniController@registerResult', ['code' => $code]);
+            //return view('register.result', ['alumni' => $alumni]);
+            return redirect()->action('AlumniController@registerResult', [
+                'code' => $code
+            ]);
         }
     }
 
@@ -35,29 +57,10 @@ class AlumniController extends Controller
             $code = $_SESSION['user_code'];
             Log::info('user_code '. $code);
 
-            $major = [
-                'คณิตศาสตร์' => 'คณิตศาสตร์',
-                'ชีววิทยา' => 'ชีววิทยา',
-                'เคมี' => 'เคมี',
-                'ฟิสิกส์' => 'ฟิสิกส์',
-                'สถิติ' => 'สถิติ',
-                'วิทยาศาสตร์สิ่งแวดล้อม' => 'วิทยาศาสตร์สิ่งแวดล้อม',
-                'วิทยาการคอมพิวเตอร์' => 'วิทยาการคอมพิวเตอร์',
-                'จุลชีววิทยา' => 'จุลชีววิทยา',
-                'คณิตศาสตร์ประยุกต์' => 'คณิตศาสตร์ประยุกต์',
-                'เทคโนโลยีสารสนเทศ' => 'เทคโนโลยีสารสนเทศ'
-            ];
-
-            $food = [
-                'ทั่วไป' => 'ทั่วไป',
-                'มังสวิรัติ' => 'มังสวิรัติ',
-                'มุสลิม' => 'มุสลิม',
-            ];
-
             return view('register.last', [
                 'code' => $code,
-                'major' => $major,
-                'food' => $food
+                'major' => $this->major,
+                'food' => $this->food
             ]);
         }else{
             Log::info('session is not set');
@@ -76,13 +79,18 @@ class AlumniController extends Controller
         $alumni['sc'] = $sc;
 
         $alumni = Alumni::create($alumni);
-        return redirect()->action('AlumniController@registerResult', ['code' => $alumni->code]);
+        return redirect()->action('AlumniController@registerResult', [
+            'code' => $alumni->code
+        ]);
     }
 
     public function registerResult($code)
     {
         $alumni = Alumni::where('code', $code)->firstOrFail();
-        return view('register.result', ['alumni' => $alumni]);
+        return view('register.result', [
+            'alumni' => $alumni,
+            'status' => 'ลงทะเบียนเสร็จสมบูรณ์'
+        ]);
     }
 
     public function getQrCode($code)

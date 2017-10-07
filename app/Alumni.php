@@ -20,6 +20,9 @@ class Alumni extends Model
         'position',
         'food',
         'follower',
+        'is_gratitude',
+        'is_party',
+        'is_attend'
     ];
 
     public $timestamps = True;

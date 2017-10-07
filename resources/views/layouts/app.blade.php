@@ -12,6 +12,11 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    @yield('head')
 </head>
 <body>
     <div id="app">
@@ -36,7 +41,9 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        &nbsp;
+                        <li>
+                            <a href="">กำหนดการ</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -51,8 +58,11 @@
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
+                                <ul class="dropdown-menu list-group" role="menu">
+                                    <li class="list-group-item">
+                                        <a href="{{ url('admin/dashboard') }}">Dashboard</a>
+                                    </li>
+                                    <li class="list-group-item">
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

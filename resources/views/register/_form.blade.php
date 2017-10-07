@@ -108,11 +108,34 @@
         </div>
     </div>
 
+    <div class="form-group">
+        {!! Form::label('is_gratitude', 'ร่วมพิธีแสดงกตเวทิตา', ['class' => 'col-md-4 control-label']) !!}
+        <div class="col-md-2">
+            {!! Form::checkbox('is_gratitude', 1, true, ['class' => 'form-control']) !!}<br>
+        </div>
+        <div class="col-md-4">
+            เวลา 14.00 - 16.00
+        </div>
+    </div>
+
+    <div class="form-group">
+        {!! Form::label('is_party', 'ร่วมงานเลี้ยงสังสรรค์', ['class' => 'col-md-4 control-label']) !!}
+        <div class="col-md-2">
+            {!! Form::checkbox('is_party', 1, false, ['class' => 'form-control']) !!}<br>
+        </div>
+        <div class="col-md-4">
+            เวลา 17.30 - 21.00
+        </div>
+        <div class="col-md-6">
+            <p><b>หมายเหตุ</b> ค่าใช้จ่ายเพิ่มเติมท่านละ 500 บาท</p>
+        </div>
+    </div>
+
     <div class="form-group{{ $errors->has('follower') ? ' has-error' : '' }}">
         <label for="follower" class="col-md-4 control-label">จำนวนผู้ติดตาม</label>
 
         <div class="col-md-6">
-            <input id="follower" type="number" class="form-control" name="follower" value="{{ old('follower') }}" required>
+            <input id="follower" type="number" class="form-control" name="follower" min="0" value="{{ old('follower') }}" required>
 
             @if ($errors->has('follower'))
                 <span class="help-block">
@@ -124,8 +147,8 @@
 
     <div class="form-group">
         <div class="col-md-6 col-md-offset-4">
-            <button type="submit" class="btn btn-primary">
-                Next
+            <button type="submit" class="btn btn-primary btn-lg">
+                ต่อไป
             </button>
         </div>
     </div>
