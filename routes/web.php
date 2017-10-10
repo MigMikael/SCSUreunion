@@ -53,6 +53,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
 
     Route::get('alumni/show/{code}', 'AdminController@showAlumni');
 
+
+    Route::get('alumni/export', 'AdminController@exportAlumni');
+
 });
 
 

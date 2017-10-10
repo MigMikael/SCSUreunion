@@ -180,6 +180,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
         Codedge\Fpdf\FpdfServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
 
     ],
 
@@ -233,6 +234,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
         'Fpdf' => Codedge\Fpdf\Facades\Fpdf::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
 
     ],
 

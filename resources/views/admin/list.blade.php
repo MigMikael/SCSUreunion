@@ -5,7 +5,7 @@
         <div class="row text-center" style="padding: 0 15px 0 15px">
             <div class="well col-md-12" style="background: #ffffff">
                 <h2>รายชื่อผู้ลงทะเบียนเข้าร่วมงานทั้งหมด</h2>
-                <a href="" class="btn btn-success">Export</a>
+                <a href="{{ url('admin/alumni/export') }}" class="btn btn-success">Export</a>
             </div>
         </div>
         <div class="row" style="padding: 0 15px 0 15px">

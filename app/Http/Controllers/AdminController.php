@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Alumni;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AdminController extends Controller
 {
@@ -73,5 +75,33 @@ class AdminController extends Controller
     {
         $alumnus = Alumni::where('code', $code)->firstOrFail();
         return view('admin.show', ['alumnus' => $alumnus]);
+    }
+
+    public function exportAlumni()
+    {
+        $alumni = Alumni::all([
+            'code',
+            'sc',
+            'first_name',
+            'last_name',
+            'major',
+            'address',
+            'email',
+            'tel',
+            'jobs',
+            'position',
+            'food',
+            'follower',
+            'is_gratitude',
+            'is_party',
+            'is_attend'
+        ]);
+        $filename = 'รายชื่อศิษย์เก่า-' . Carbon::now();
+
+        Excel::create($filename, function($excel) use ($alumni) {
+            $excel->sheet('sheet1', function($sheet) use ($alumni) {
+                $sheet->fromArray($alumni);
+            });
+        })->download('xlsx');
     }
 }
