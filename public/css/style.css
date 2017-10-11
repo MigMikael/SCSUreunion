@@ -43,3 +43,25 @@ pre,
 body {
     font-family: "silpakorn", serif;
 }
+
+.btn-primary {
+    background: #FFC107;
+    border-color: #FFC107;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+    background: #FFAB00;
+    border-color: #FFC107;
+}
+
+.navbar {
+    background: #40826d;
+}
+
+.navbar-brand {
+    color: #ffffff;
+}
+
+.icon-bar {
+    background-color: #ffffff;
+}
