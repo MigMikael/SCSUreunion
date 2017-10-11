@@ -79,23 +79,7 @@ class AdminController extends Controller
 
     public function exportAlumni()
     {
-        $alumni = Alumni::all([
-            'code',
-            'sc',
-            'first_name',
-            'last_name',
-            'major',
-            'address',
-            'email',
-            'tel',
-            'jobs',
-            'position',
-            'food',
-            'follower',
-            'is_gratitude',
-            'is_party',
-            'is_attend'
-        ]);
+        $alumni = Alumni::all();
         $filename = 'รายชื่อศิษย์เก่า-' . Carbon::now();
 
         Excel::create($filename, function($excel) use ($alumni) {
@@ -103,5 +87,27 @@ class AdminController extends Controller
                 $sheet->fromArray($alumni);
             });
         })->download('xlsx');
+    }
+
+    public function summary()
+    {
+        $scores = [];
+        for($i = 1; $i <= 42; $i++){
+            $count = Alumni::where([
+                ['sc', '=', $i],
+                ['is_attend', '=', true]
+            ])->count();
+            array_push($scores, $count);
+        }
+        arsort($scores);
+
+        /*foreach($scores as $x=>$x_value)
+        {
+            echo "Key=" . $x . ", Value=" . $x_value;
+            echo "<br>";
+        }*/
+        $out_scores = array_slice($scores, 0, 12, true);
+        //return $out_score;
+        return view('admin.summary', ['scores' => $out_scores]);
     }
 }

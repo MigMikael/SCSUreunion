@@ -17,10 +17,6 @@
                     <table class="table table-striped">
                         <tbody>
                         <tr>
-                            <td>รหัส</td>
-                            <td></td>
-                        </tr>
-                        <tr>
                             <td>สาขา</td>
                             <td>{{ $alumnus->major }}</td>
                         </tr>

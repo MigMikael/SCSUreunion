@@ -38,6 +38,7 @@ Route::get('alumni/{code}/qr_download', 'AlumniController@downloadQrCode');
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
 
     Route::get('dashboard', 'AdminController@dashboard');
+    Route::get('summary', 'AdminController@summary');
 
 
     Route::get('register', 'AdminController@register');

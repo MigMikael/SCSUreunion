@@ -37,7 +37,7 @@
                     <h3>เข้าร่วมงานแล้ว : {{ $attend }}</h3>
                     <br>
                     <br>
-                    <a href="" class="btn btn-primary">รายละเอียด</a>
+                    <a href="{{ url('admin/summary') }}" class="btn btn-primary">รายละเอียด</a>
                 </div>
             </div>
         </div>
