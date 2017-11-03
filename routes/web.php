@@ -35,6 +35,14 @@ Route::get('alumni/{code}/qr', 'AlumniController@getQrCode');
 Route::get('alumni/{code}/qr_download', 'AlumniController@downloadQrCode');
 
 
+Route::get('alumni/payment', 'AlumniController@getPayment');
+Route::post('alumni/payment', 'AlumniController@confirmPayment');
+
+
+Route::get('alumni/{code}/attach/payment', 'AlumniController@getAttach');
+Route::post('alumni/attach/payment', 'AlumniController@attachPayment');
+
+
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
 
     Route::get('dashboard', 'AdminController@dashboard');
@@ -56,6 +64,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
 
 
     Route::get('alumni/export', 'AdminController@exportAlumni');
+
+
+    Route::get('alumni/{code}/show/attach', 'AdminController@showAttach');
 
 });
 

@@ -30,6 +30,7 @@ class CreateAlumnisTable extends Migration
             $table->boolean('is_gratitude')->default(false);
             $table->boolean('is_party')->default(false);
             $table->boolean('is_attend')->default(false);
+            $table->string('attach_payment')->nullable();
             $table->timestamps();
         });
     }

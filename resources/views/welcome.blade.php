@@ -12,6 +12,10 @@
             <a class="btn btn-primary btn-lg" href="{{ url('/alumni/register/step1') }}">
                 ลงทะเบียนเข้าร่วมงาน
             </a>
+
+            <a class="btn btn-success btn-lg" href="{{ url('/alumni/payment') }}">
+                ยืนยันการชำระเงิน
+            </a>
         </div>
     </div>
 @endsection

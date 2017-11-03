@@ -6,6 +6,7 @@ use App\Alumni;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
+use Storage;
 
 class AdminController extends Controller
 {
@@ -109,5 +110,12 @@ class AdminController extends Controller
         $out_scores = array_slice($scores, 0, 12, true);
         //return $out_score;
         return view('admin.summary', ['scores' => $out_scores]);
+    }
+
+    public function showAttach($code)
+    {
+        $alumni = Alumni::where('code', $code)->first();
+        $path = storage_path('app/'.$alumni->attach_payment);
+        return response()->download($path);
     }
 }

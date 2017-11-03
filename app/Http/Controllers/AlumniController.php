@@ -6,6 +6,8 @@ use Log;
 use App\Alumni;
 use Illuminate\Http\Request;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use Storage;
+use File;
 
 class AlumniController extends Controller
 {
@@ -73,8 +75,13 @@ class AlumniController extends Controller
         $alumni = $request->all();
 
         $sc = $alumni['code'];
-        $sc = substr($sc, 2, 2);
-        $sc = intval($sc) - 14;
+        if(strlen($sc) == 8){
+            $sc = substr($sc, 2, 2);
+            $sc = intval($sc) - 14;
+        }elseif (strlen($sc) == 7){
+            $sc = substr($sc, 1, 2);
+            $sc = intval($sc) - 14;
+        }
 
         $alumni['sc'] = $sc;
 
@@ -126,5 +133,55 @@ class AlumniController extends Controller
         }else{
             return false;
         }
+    }
+
+    public function getPayment()
+    {
+        return view('payment.first');
+    }
+
+    public function confirmPayment(Request $request)
+    {
+        $code = $request->get('code');
+        $alumni = Alumni::where('code', $code)->first();
+
+        if(sizeof($alumni) != 1){
+            return view('status', [
+                'title' => 'ไม่พบข้อมูลในระบบ',
+                'body' => 'กรุณาลงทะเบียน',
+                'url' => url('/')
+            ]);
+        }
+
+        return redirect()->action('AlumniController@getAttach', ['code' => $code]);
+    }
+
+    public function getAttach($code)
+    {
+        $alumni = Alumni::where('code', $code)->first();
+        return view('payment.attach', ['alumni' => $alumni]);
+    }
+
+    public function attachPayment(Request $request)
+    {
+        $code = $request->get('code');
+
+        if(!$request->hasFile('file')){
+            return 'file not found';
+        }
+        $file = $request->file('file');
+        $alumni = Alumni::where('code', $code)->first();
+
+        $ex = $file->getClientOriginalExtension();
+        $payment_filename = $file->getFilename(). '.' . $ex;
+
+        Storage::put($payment_filename, File::get($file));
+        $alumni->attach_payment = $payment_filename;
+        $alumni->save();
+
+        return view('register.result', [
+            'alumni' => $alumni,
+            'status' => 'ยืนยันการชำระเงินเสร็จสมบูรณ์'
+        ]);
     }
 }

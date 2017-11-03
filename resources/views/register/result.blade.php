@@ -31,7 +31,11 @@
                         <button class="btn btn-success btn-lg" onclick="printFunction()">
                             พิมพ์
                         </button>
-                        <a href="" class="btn btn-default btn-lg">แก้ไขข้อมูล</a>
+                        @if($alumni->is_party == 1)
+                            <a href="{{ url('alumni/'.$alumni->code.'/attach/payment') }}" class="btn btn-default btn-lg">
+                                ยืนยันการชำระเงิน
+                            </a>
+                        @endif
                     </div>
                 </div>
             </div>
