@@ -184,4 +184,14 @@ class AlumniController extends Controller
             'status' => 'ยืนยันการชำระเงินเสร็จสมบูรณ์'
         ]);
     }
+
+    public function paymentInfo()
+    {
+        return view('payment.info');
+    }
+
+    public function getSchedule()
+    {
+        return view('schedule');
+    }
 }

@@ -6,7 +6,7 @@
             <div class="col-md-8 col-md-offset-2">
                 @if (isset($status))
                     <div class="alert alert-success">
-                        {{ $status }}
+                        <h3>{{ $status }}</h3>
                     </div>
                 @endif
                 <div class="panel panel-default" style="text-align: center">
@@ -17,6 +17,16 @@
                     <div class="panel-body">
                         <h3>{{ $alumni->major }}  <b style="color: #FFD700">[SC {{ $alumni->sc }}]</b></h3>
                         <br>
+
+                        @if($alumni->is_party == true && $alumni->attach_payment != null)
+                            <p style="color: #40826d">
+                                <b>ยืนยันการชำระเงินเรียบร้อย</b>
+                            </p>
+                        @elseif($alumni->is_party == true && $alumni->attach_payment == null)
+                            <p style="color: #ff0000">
+                                <b>ยังไม่ได้ยืนยันการชำระเงิน</b>
+                            </p>
+                        @endif
 
                         <p style="color: #ff0000">
                             <b>***กรุณาบันทึกคิวอาร์โค้ดด้านล่างเพื่อใช้ลงทะเบียนในวันงาน***</b>

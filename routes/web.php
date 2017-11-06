@@ -34,7 +34,9 @@ Route::get('alumni/register/result/{code}', 'AlumniController@registerResult');
 Route::get('alumni/{code}/qr', 'AlumniController@getQrCode');
 Route::get('alumni/{code}/qr_download', 'AlumniController@downloadQrCode');
 
+Route::get('alumni/schedule', 'AlumniController@getSchedule');
 
+Route::get('alumni/payment/info', 'AlumniController@paymentInfo');
 Route::get('alumni/payment', 'AlumniController@getPayment');
 Route::post('alumni/payment', 'AlumniController@confirmPayment');
 
@@ -67,6 +69,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
 
 
     Route::get('alumni/{code}/show/attach', 'AdminController@showAttach');
+
+
+    Route::get('alumni/{code}/payment/approve', 'AdminController@approvePayment');
+
+
+    Route::get('alumni/{code}/payment/disapprove', 'AdminController@disapprovePayment');
 
 });
 

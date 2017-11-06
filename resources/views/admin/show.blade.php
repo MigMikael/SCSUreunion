@@ -86,5 +86,39 @@
                 </div>
             </div>
         </div>
+
+        @if($alumnus->attach_payment == null)
+            <div class="panel">
+                <div class="panel-heading">
+                    <h2>ไม่มีหลักฐานการชำระเงิน</h2>
+                </div>
+            </div>
+        @else
+            <div class="panel">
+                <div class="panel-heading">
+                    <h2>
+                        หลักฐานการชำระเงิน
+                    </h2>
+
+                    @if($alumnus->is_approve == false)
+                        <p style="color: #ff0000">ยังไม่ยืนยันหลักฐานการโอน</p>
+                    @else
+                        <p style="color: #00ff00">ยืนยันหลักฐานการโอนแล้ว</p>
+                    @endif
+                </div>
+                <div class="panel-body">
+                    @if($alumnus->is_approve == false)
+                        <a href="{{ url('admin/alumni/'.$alumnus->code.'/payment/approve') }}" class="btn btn-success">
+                            ยืนยันหลักฐานการโอน
+                        </a>
+                    @else
+                        <a href="{{ url('admin/alumni/'.$alumnus->code.'/payment/disapprove') }}" class="btn btn-danger">
+                            ยกเลิกยืนยันหลักฐานการโอน
+                        </a>
+                    @endif
+                    <img class="img-responsive img-thumbnail" src="{{ url('admin/alumni/'.$alumnus->code.'/show/attach') }}" alt="">
+                </div>
+            </div>
+        @endif
     </div>
 @endsection

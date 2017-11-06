@@ -4,7 +4,9 @@
     {!! Form::hidden('code', $code, ['class' => 'form-control']) !!}
 
     <div class="form-group{{ $errors->has('first_name') ? ' has-error' : '' }}">
-        <label for="first_name" class="col-md-4 control-label">ชื่อ *</label>
+        <label for="first_name" class="col-md-4 control-label">
+            ชื่อ <b style="color: #ff0000">*</b>
+        </label>
 
         <div class="col-md-6">
             <input id="first_name" type="text" class="form-control input-lg" name="first_name" value="{{ old('first_name') }}" required autofocus>
@@ -18,7 +20,9 @@
     </div>
 
     <div class="form-group{{ $errors->has('last_name') ? ' has-error' : '' }}">
-        <label for="last_name" class="col-md-4 control-label">นามสกุล *</label>
+        <label for="last_name" class="col-md-4 control-label">
+            นามสกุล <b style="color: #ff0000">*</b>
+        </label>
 
         <div class="col-md-6">
             <input id="last_name" type="text" class="form-control input-lg" name="last_name" value="{{ old('last_name') }}" required>
@@ -32,7 +36,9 @@
     </div>
 
     <div class="form-group">
-        {!! Form::label('major', 'สาขาวิชา *', ['class' => 'col-md-4 control-label']) !!}
+        <label for="last_name" class="col-md-4 control-label">
+            สาขาวิชา <b style="color: #ff0000">*</b>
+        </label>
         <div class="col-md-6">
             {!! Form::select('major', $major, null, ['class' => 'form-control']) !!}<br>
         </div>
@@ -88,9 +94,7 @@
     </div>
 
     <div class="form-group{{ $errors->has('position') ? ' has-error' : '' }}">
-        <h4>
-            <label for="position" class="col-md-4 control-label">ตำแหน่งงาน</label>
-        </h4>
+        <label for="position" class="col-md-4 control-label">ตำแหน่งงาน</label>
 
         <div class="col-md-6">
             <input id="position" type="text" class="form-control input-lg" name="position" value="{{ old('position') }}">
@@ -100,15 +104,6 @@
                     <strong>{{ $errors->first('position') }}</strong>
                 </span>
             @endif
-        </div>
-    </div>
-
-    <div class="form-group">
-        <h4>
-            {!! Form::label('food', 'อาหาร *', ['class' => 'col-md-4 control-label']) !!}
-        </h4>
-        <div class="col-md-6">
-            {!! Form::select('food', $food, null, ['class' => 'form-control']) !!}<br>
         </div>
     </div>
 
@@ -131,14 +126,25 @@
             เวลา 17.30 - 21.00
         </div>
         <div class="col-md-6">
-            <p><b>หมายเหตุ</b> ค่าใช้จ่ายเพิ่มเติมท่านละ 500 บาท</p>
+            <p style="color:#ff0000;"><b>หมายเหตุ</b> ค่าใช้จ่ายเพิ่มเติมท่านละ 500 บาท</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="last_name" class="col-md-4 control-label">
+            อาหาร <b style="color: #ff0000">*</b>
+        </label>
+
+        <div class="col-md-6">
+            {!! Form::select('food', $food, null, ['class' => 'form-control']) !!}<br>
         </div>
     </div>
 
     <div class="form-group{{ $errors->has('follower') ? ' has-error' : '' }}">
-        <h4>
-            <label for="follower" class="col-md-4 control-label">จำนวนผู้ติดตาม *</label>
-        </h4>
+
+        <label for="last_name" class="col-md-4 control-label">
+            จำนวนผู้ติดตาม <b style="color: #ff0000">*</b>
+        </label>
 
         <div class="col-md-6">
             @if(Request::is('*/edit'))

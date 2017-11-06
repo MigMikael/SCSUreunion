@@ -42,7 +42,13 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         <li>
-                            <a href="">กำหนดการ</a>
+                            <a href="{{ url('alumni/schedule') }}">กำหนดการ</a>
+                        </li>
+                        <li>
+                            <a href="">จำนวนผู้ร่วมงาน</a>
+                        </li>
+                        <li>
+                            <a href="{{ url('alumni/payment/info') }}">ข้อมูลการชำระเงิน</a>
                         </li>
                     </ul>
 

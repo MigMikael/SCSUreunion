@@ -115,7 +115,34 @@ class AdminController extends Controller
     public function showAttach($code)
     {
         $alumni = Alumni::where('code', $code)->first();
-        $path = storage_path('app/'.$alumni->attach_payment);
-        return response()->download($path);
+
+        $file = Storage::disk('local')->get($alumni->attach_payment);
+        $mimeType = Storage::mimeType($alumni->attach_payment);
+
+        return response($file, 200)->header('Content-Type', $mimeType);
+    }
+
+    public function approvePayment($code)
+    {
+        $alumni = Alumni::where('code', $code)->firstOrFail();
+
+        $alumni->is_approve = true;
+        $alumni->save();
+
+        return redirect()->action('AdminController@showAlumni', [
+            'code' => $alumni->code
+        ]);
+    }
+
+    public function disapprovePayment($code)
+    {
+        $alumni = Alumni::where('code', $code)->firstOrFail();
+
+        $alumni->is_approve = false;
+        $alumni->save();
+
+        return redirect()->action('AdminController@showAlumni', [
+            'code' => $alumni->code
+        ]);
     }
 }

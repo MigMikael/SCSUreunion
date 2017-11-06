@@ -23,7 +23,8 @@ class Alumni extends Model
         'is_gratitude',
         'is_party',
         'is_attend',
-        'attach_payment'
+        'attach_payment',
+        'is_approve'
     ];
 
     public $timestamps = True;

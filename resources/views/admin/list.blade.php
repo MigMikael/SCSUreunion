@@ -18,7 +18,6 @@
                         <th>นามสกุล</th>
                         <th>สาขาวิชา</th>
                         <th>สถานะร่วมงาน</th>
-                        <th>หลักฐานชำระเงิน</th>
                         <th>รายละเอียด</th>
                     </tr>
                     </thead>
@@ -34,13 +33,6 @@
                                 <i class="material-icons" style="color: green">check_circle</i>
                             @else
                                 <i class="material-icons" style="color: red">highlight_off</i>
-                            @endif
-                        </td>
-                        <td>
-                            @if($alumnus->attach_payment == null)
-                                <i class="material-icons" style="color: red">highlight_off</i>
-                            @else
-                                <a href="{{ url('admin/alumni/'.$alumnus->code.'/show/attach') }}">view</a>
                             @endif
                         </td>
                         <td>

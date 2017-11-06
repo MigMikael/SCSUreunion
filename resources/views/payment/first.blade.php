@@ -5,14 +5,13 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">
+                    <div class="panel-heading text-center">
                         <h2>ยืนยันการชำระเงิน</h2>
                     </div>
 
                     <div class="panel-body">
                         <form class="form-horizontal" method="POST" action="{{ url('alumni/payment') }}">
                             {{ csrf_field() }}
-
                             <div class="form-group{{ $errors->has('code') ? ' has-error' : '' }} text-center">
                                 <label for="code" class="col-md-12">รหัสนักศึกษา</label>
 
