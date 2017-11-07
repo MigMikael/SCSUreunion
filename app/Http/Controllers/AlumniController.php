@@ -177,6 +177,7 @@ class AlumniController extends Controller
 
         Storage::put($payment_filename, File::get($file));
         $alumni->attach_payment = $payment_filename;
+        $alumni->is_approve = false;
         $alumni->save();
 
         return view('register.result', [

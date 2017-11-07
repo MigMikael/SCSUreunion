@@ -19,6 +19,8 @@
                         <br>
 
                         @if($alumni->is_party == true && $alumni->attach_payment != null)
+                            <p>จำนวนผู้ร่วมงานเลี้ยงสังสรรค์ {{ $alumni->follower }} ท่าน</p>
+                            <p>รวมเป็นเงิน {{ $alumni->follower * 1000 }} บาท</p>
                             <p style="color: #40826d">
                                 <b>ยืนยันการชำระเงินเรียบร้อย</b>
                             </p>
