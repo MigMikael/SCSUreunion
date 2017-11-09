@@ -1,8 +1,8 @@
-<div class="panel panel-default">
+<div class="panel panel-success text-center">
     <div class="panel-heading">
-        <h1>{{ $key + 1 }}</h1>
+        <h3>SC {{ $key + 1 }}</h3>
     </div>
-    <div class="panel-body">
-        {{ $value }}
+    <div class="panel-body" style="color: #FFC107">
+        <h1>{{ $value }}</h1>
     </div>
 </div>

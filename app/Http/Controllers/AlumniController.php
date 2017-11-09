@@ -167,7 +167,11 @@ class AlumniController extends Controller
         $code = $request->get('code');
 
         if(!$request->hasFile('file')){
-            return 'file not found';
+            return view('status', [
+                'title' => 'ไม่พบไฟล์รูปภาพ',
+                'body' => 'กรุณาแนบไฟล์ที่เป็นรูปภาพเท่านั้น',
+                'url' => url('/alumni/'.$code.'/attach/payment')
+            ]);
         }
         $file = $request->file('file');
         $alumni = Alumni::where('code', $code)->first();
@@ -194,5 +198,15 @@ class AlumniController extends Controller
     public function getSchedule()
     {
         return view('schedule');
+    }
+
+    public function registerAmount()
+    {
+        $scores = [];
+        for($i = 1; $i <= 42; $i++){
+            $count = Alumni::where('sc', '=', $i)->count();
+            array_push($scores, $count);
+        }
+        return view('amount', ['scores' => $scores]);
     }
 }

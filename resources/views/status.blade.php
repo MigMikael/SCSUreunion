@@ -14,7 +14,7 @@
                     </div>
 
                     <div class="panel-footer">
-                        <a class="btn btn-success" href="{{ $url }}">กลับหน้าหลัก</a>
+                        <a class="btn btn-success" href="{{ $url }}">กลับ</a>
                     </div>
                 </div>
             </div>

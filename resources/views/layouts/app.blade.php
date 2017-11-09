@@ -45,7 +45,7 @@
                             <a href="{{ url('alumni/schedule') }}">กำหนดการ</a>
                         </li>
                         <li>
-                            <a href="">จำนวนผู้ร่วมงาน</a>
+                            <a href="{{ url('alumni/amount') }}">จำนวนผู้ร่วมงาน</a>
                         </li>
                         <li>
                             <a href="{{ url('alumni/payment/info') }}">ข้อมูลการชำระเงิน</a>

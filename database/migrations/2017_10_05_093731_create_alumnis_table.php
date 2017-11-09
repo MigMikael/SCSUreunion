@@ -20,9 +20,9 @@ class CreateAlumnisTable extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->string('major');
-            $table->text('address');
+            $table->text('address')->nullable();
             $table->string('email')->nullable();
-            $table->string('tel');
+            $table->string('tel')->nullable();
             $table->text('jobs')->nullable();
             $table->string('position')->nullable();
             $table->string('food');

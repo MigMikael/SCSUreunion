@@ -15,21 +15,22 @@
                     </div>
 
                     <div class="panel-body">
-                        <h3>{{ $alumni->major }}  <b style="color: #FFD700">[SC {{ $alumni->sc }}]</b></h3>
+                        <h2>{{ $alumni->major }}  <b style="color: #FFD700">[SC {{ $alumni->sc }}]</b></h2>
                         <br>
-
+                        <hr>
                         @if($alumni->is_party == true && $alumni->attach_payment != null)
-                            <p>จำนวนผู้ร่วมงานเลี้ยงสังสรรค์ {{ $alumni->follower }} ท่าน</p>
-                            <p>รวมเป็นเงิน {{ $alumni->follower * 1000 }} บาท</p>
                             <p style="color: #40826d">
                                 <b>ยืนยันการชำระเงินเรียบร้อย</b>
                             </p>
+                            <hr>
                         @elseif($alumni->is_party == true && $alumni->attach_payment == null)
                             <p style="color: #ff0000">
-                                <b>ยังไม่ได้ยืนยันการชำระเงิน</b>
+                                <b>**ยังไม่ได้ยืนยันการชำระเงิน**</b>
                             </p>
+                            <h3>จำนวนผู้ร่วมงานเลี้ยงสังสรรค์ {{ $alumni->follower + 1 }} ท่าน</h3>
+                            <h3>รวมเป็นเงิน {{ ($alumni->follower + 1) * 1000 }} บาท</h3>
+                            <hr>
                         @endif
-
                         <p style="color: #ff0000">
                             <b>***กรุณาบันทึกคิวอาร์โค้ดด้านล่างเพื่อใช้ลงทะเบียนในวันงาน***</b>
                         </p>

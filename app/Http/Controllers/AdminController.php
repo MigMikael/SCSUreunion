@@ -108,7 +108,7 @@ class AdminController extends Controller
             echo "<br>";
         }*/
         $out_scores = array_slice($scores, 0, 12, true);
-        //return $out_score;
+        //return $out_scores;
         return view('admin.summary', ['scores' => $out_scores]);
     }
 

@@ -35,6 +35,7 @@ Route::get('alumni/{code}/qr', 'AlumniController@getQrCode');
 Route::get('alumni/{code}/qr_download', 'AlumniController@downloadQrCode');
 
 Route::get('alumni/schedule', 'AlumniController@getSchedule');
+Route::get('alumni/amount', 'AlumniController@registerAmount');
 
 Route::get('alumni/payment/info', 'AlumniController@paymentInfo');
 Route::get('alumni/payment', 'AlumniController@getPayment');
